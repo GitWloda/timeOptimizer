@@ -12,27 +12,6 @@
   <div class="wrap">
     <div>
       <h2 class="title" id="sessionTitle">Sessione: 1</h2>
-      <p class="subtitle">
-        Every Second Counts.
-      </p>
-    </div>
-    <div class="card stats" aria-label="Totali e percentuali">
-      <div class="row"><span class="k">Tempo sessione</span><span class="v" id="sessionTime">0:00</span></div>
-
-      <div class="row" id="row-pausa">
-        <span class="k"><span class="activeDot" id="dot-pausa"></span> Pausa</span>
-        <span class="v" id="pausa">0:00 (0%)</span>
-      </div>
-
-      <div class="row" id="row-lavoro">
-        <span class="k"><span class="activeDot" id="dot-lavoro"></span> Lavoro</span>
-        <span class="v" id="lavoro">0:00 (0%)</span>
-      </div>
-
-      <div class="row" id="row-studio">
-        <span class="k"><span class="activeDot" id="dot-studio"></span> Studio</span>
-        <span class="v" id="studio">0:00 (0%)</span>
-      </div>
     </div>
     <div id="actual-bar" class="statusLine card" aria-label="Stato corrente">
       sei in: <span id="currentStateLabel">—</span>
@@ -51,8 +30,35 @@
       </div>
 
       <button class="btnReset" type="button" id="reset">reset</button>
-    </div>
 
+      <!-- parte di import export-->
+      <div class="btnRow" aria-label="Import export cronologia" style="margin-top: 1rem; gap: .5rem;">
+        <button class="btnReset" type="button" id="exportJson">Esporta JSON</button>
+        <button class="btnReset" type="button" id="importJsonBtn">Importa JSON</button>
+        <input type="file" id="importJsonInput" accept="application/json" style="display:none" />
+      </div>
+    </div>
+    <div class="card stats" aria-label="Totali e percentuali">
+      <p class="subtitle">
+        Every Second Counts.
+      </p>
+      <div class="row"><span class="k">Tempo sessione</span><span class="v" id="sessionTime">0:00</span></div>
+
+      <div class="row" id="row-pausa">
+        <span class="k"><span class="activeDot" id="dot-pausa"></span> Pausa</span>
+        <span class="v" id="pausa">0:00 (0%)</span>
+      </div>
+
+      <div class="row" id="row-lavoro">
+        <span class="k"><span class="activeDot" id="dot-lavoro"></span> Lavoro</span>
+        <span class="v" id="lavoro">0:00 (0%)</span>
+      </div>
+
+      <div class="row" id="row-studio">
+        <span class="k"><span class="activeDot" id="dot-studio"></span> Studio</span>
+        <span class="v" id="studio">0:00 (0%)</span>
+      </div>
+    </div>
     <div class="card" aria-label="Cronologia">
       <div class="logTitle">Cronologia</div>
       <ul id="log"></ul>
