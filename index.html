@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css.css">
+  <script defer src="js.js"></script>
+  <title>Session Tracker</title>
+</head>
+
+<body>
+  <div class="wrap">
+    <div>
+      <h2 class="title" id="sessionTitle">Sessione: 1</h2>
+      <p class="subtitle">
+        Every Second Counts.
+      </p>
+    </div>
+    <div class="card stats" aria-label="Totali e percentuali">
+      <div class="row"><span class="k">Tempo sessione</span><span class="v" id="sessionTime">0:00</span></div>
+
+      <div class="row" id="row-pausa">
+        <span class="k"><span class="activeDot" id="dot-pausa"></span> Pausa</span>
+        <span class="v" id="pausa">0:00 (0%)</span>
+      </div>
+
+      <div class="row" id="row-lavoro">
+        <span class="k"><span class="activeDot" id="dot-lavoro"></span> Lavoro</span>
+        <span class="v" id="lavoro">0:00 (0%)</span>
+      </div>
+
+      <div class="row" id="row-studio">
+        <span class="k"><span class="activeDot" id="dot-studio"></span> Studio</span>
+        <span class="v" id="studio">0:00 (0%)</span>
+      </div>
+    </div>
+    <div id="actual-bar" class="statusLine card" aria-label="Stato corrente">
+      sei in: <span id="currentStateLabel">—</span>
+    </div>
+    <div class="card">
+      <div id="timeline" aria-label="Timeline sessione"></div>
+    </div>
+
+    <div class="card controls" aria-label="Controlli">
+      <div class="btnRow" aria-label="Azioni">
+        <button class="btn btnAction" type="button" data-state="pausa"  data-color="#ef4444" aria-pressed="false" style="background:#ef4444">pausa</button>
+        <button class="btn btnAction" type="button" data-state="lavoro" data-color="#f59e0b" aria-pressed="false" style="background:#f59e0b">lavoro</button>
+        <button class="btn btnAction" type="button" data-state="studio" data-color="#22c55e" aria-pressed="false" style="background:#22c55e">studio</button>
+
+        <button class="btn btnToggle" type="button" id="toggle" aria-pressed="false">Play</button>
+      </div>
+
+      <button class="btnReset" type="button" id="reset">reset</button>
+    </div>
+
+    <div class="card" aria-label="Cronologia">
+      <div class="logTitle">Cronologia</div>
+      <ul id="log"></ul>
+    </div>
+  </div>
+
+  <div id="tooltip" role="status" aria-live="polite"></div>
+  <div id="tooltipArrow" aria-hidden="true"></div>
+</body>
+</html>

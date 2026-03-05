@@ -1,0 +1,327 @@
+
+    :root{
+      --bg: #0b0d12;
+      --card: rgba(255,255,255,.06);
+      --stroke: rgba(255,255,255,.12);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.65);
+    }
+
+    html, body{ margin:0; width:100%; overflow-x:hidden; }
+
+    body{
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(1200px 600px at 50% 0%, #141a2b 0%, var(--bg) 55%);
+      color: var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      padding: 24px;
+      box-sizing: border-box;
+    }
+    *{ box-sizing: border-box; }
+
+    .wrap{
+      width: min(980px, 100%);
+      display:grid;
+      gap:14px;
+      min-width: 0;
+    }
+    .title{
+      text-align:center;
+      font-weight: 950;
+      margin:0;
+      letter-spacing:.2px; 
+      font-size: 64px;
+    }
+    .subtitle{
+      text-align:center;
+      margin:0;
+      color: var(--muted);
+      font-size: 24px; 
+      line-height: 1.35;
+    }
+
+    .card{
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      border-radius: 18px;
+      padding: 14px;
+      backdrop-filter: blur(8px);
+      min-width: 0;
+      font-size:  24px;
+      width: 100%;
+    }
+
+    /* Timeline */
+    #timeline{
+      display:flex;
+      width:100%;
+      height:74px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.22);
+      overflow:hidden;
+      min-width:0;
+    }
+
+    .seg{
+      position: relative;
+      height:100%;
+      min-width:0;
+      flex: 1 1 0px;
+      border-right: 1px solid rgba(0,0,0,.18);
+      overflow: hidden;
+    }
+    .seg:last-child{ border-right:none; }
+
+    .seg::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(to bottom, rgba(0,0,0,.34), rgba(0,0,0,.34));
+      pointer-events:none;
+    }
+
+    .segText{
+      position: relative;
+      z-index:1;
+      height:100%;
+      display:grid;
+      place-items:center;
+      padding: 0 8px;
+      text-align:center;
+      font-weight: 950;
+      font-variant-numeric: tabular-nums;
+      color: rgba(255,255,255,.96);
+      text-shadow: 0 2px 14px rgba(0,0,0,.65);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width:0;
+      transition: opacity .12s ease;
+      font-size:  24px;
+    }
+    .segText.isHidden{ opacity:0; }
+
+    /* Controls */
+    .controls{ display:grid; gap:10px; justify-items:center; }
+    .btnRow{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center; align-items:center; }
+
+    .btn{
+      border: 1px solid rgba(255,255,255,.18);
+      padding:10px 14px;
+      border-radius:14px;
+      cursor:pointer;
+      font-weight:950;
+      letter-spacing:.2px;
+      transition: transform .08s ease, filter .12s ease, box-shadow .12s ease;
+      user-select:none;
+      color: rgba(255,255,255,.96);
+      box-shadow: 0 10px 24px rgba(0,0,0,.22);
+      font-size:  18px;
+    }
+    .btn:active{ transform: translateY(1px); }
+    .btn:focus{ outline:2px solid rgba(255,255,255,.85); outline-offset:2px; }
+
+    .btnAction[aria-pressed="true"]{
+      box-shadow: 0 10px 28px rgba(0,0,0,.30), 0 0 0 2px rgba(255,255,255,.30) inset;
+      filter: saturate(1.15) brightness(1.02);
+    }
+
+    .btnToggle{
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.18);
+      color: var(--text);
+    }
+    .btnToggle[aria-pressed="true"]{
+      background: rgba(255,255,255,.18);
+      border-color: rgba(255,255,255,.32);
+    }
+
+    .btnReset{
+      padding:10px 16px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      cursor:pointer;
+      font-weight:950;
+      font-size:  18px;
+    }
+
+    /* "sei in" (spostato) */
+    .statusLine{
+      text-align: center;
+      color: rgba(255,255,255,.86);
+      font-weight: 900;
+      letter-spacing: .2px;
+      font-size:  24px;
+      width: min(220px, 100%);
+      margin: 0 auto;
+    }
+    .statusLine span{ color: rgba(255,255,255,.96); }
+
+    /* Stats */
+    .stats{ display:grid; gap:8px; width: min(520px, 100%); margin: 0 auto; min-width: 0; font-size:  18px;}
+    .row{
+      display:flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      padding: 8px 10px;
+      border-radius: 14px;
+      background: rgba(0,0,0,.18);
+      border: 1px solid rgba(255,255,255,.08);
+      min-width: 0;
+    }
+    .k{ color: var(--muted); font-weight: 750; display:flex; align-items:center; gap:8px; min-width:0; }
+    .v{ font-weight: 950; font-variant-numeric: tabular-nums; }
+
+    .activeDot{
+      width: 10px;
+      height: 10px;
+      border-radius: 99px;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,.18);
+      box-shadow: 0 0 0 2px rgba(0,0,0,.18) inset;
+      opacity: 0;
+      transition: opacity .12s ease;
+      flex: 0 0 auto;
+    }
+    .row.isActive .activeDot{ opacity: 1; }
+
+    /* Cronologia */
+    .logTitle{
+      text-align: center;
+      font-weight: 950;
+      margin: 4px 0 8px;
+    }
+    #log{
+      display: grid;
+      gap: 10px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+    .logItem{
+      display: grid;
+      gap: 8px;
+      padding: 12px;
+      border-radius: 16px;
+      background: rgba(0,0,0,.18);
+      border: 1px solid rgba(255,255,255,.08);
+      min-width: 0;
+    }
+    .logHead{
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: baseline;
+      min-width: 0;
+    }
+    .chip{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 900;
+      font-size: 12px;
+      color: rgba(255,255,255,.90);
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      width: fit-content;
+      min-width: 0;
+    }
+    .dot{
+      width: 10px; height: 10px;
+      border-radius: 99px;
+      background: #fff;
+      box-shadow: 0 0 0 2px rgba(0,0,0,.20) inset;
+      flex: 0 0 auto;
+    }
+    .logName{
+      font-weight: 950;
+      color: rgba(255,255,255,.95);
+      text-transform: lowercase;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .logTime{
+      font-weight: 950;
+      font-variant-numeric: tabular-nums;
+      color: rgba(255,255,255,.88);
+      white-space: nowrap;
+      flex: 0 0 auto;
+    }
+    .note{
+      width: 100%;
+      resize: vertical;
+      min-height: 42px;
+      max-height: 180px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: rgba(255,255,255,.92);
+      padding: 10px 10px;
+      font: 650 13px/1.35 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      outline: none;
+    }
+    .note::placeholder{ color: rgba(255,255,255,.55); }
+
+    .eventBadge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-weight: 950;
+      font-size: 12px;
+      color: rgba(255,255,255,.92);
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      width: fit-content;
+    }
+    .eventBadge small{
+      font-weight: 800;
+      color: rgba(255,255,255,.72);
+    }
+
+    /* Tooltip globale */
+    #tooltip{
+      position: fixed;
+      z-index: 9999;
+      transform: translate(-50%, calc(-100% - 12px));
+      left: 0;
+      top: 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .08s ease;
+      white-space: pre;
+      font: 850 12px/1.35 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      color: rgba(255,255,255,.95);
+      background: rgba(10,12,18,.92);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 12px;
+      padding: 10px 12px;
+      box-shadow: 0 18px 40px rgba(0,0,0,.45);
+      max-width: min(360px, 86vw);
+    }
+    #tooltip[data-show="true"]{ opacity: 1; }
+
+    #tooltipArrow{
+      position: fixed;
+      z-index: 10000;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      pointer-events:none;
+      transition: opacity .08s ease;
+      width: 0; height: 0;
+      border: 6px solid transparent;
+      border-top-color: rgba(10,12,18,.92);
+      transform: translate(-50%, -8px);
+    }
+    #tooltipArrow[data-show="true"]{ opacity: 1; }
